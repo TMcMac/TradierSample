@@ -5,7 +5,7 @@ import sys
 
 
 SANDBOX_TOKEN = "<TOKEN_HERE>"  # Replace with your actual sandbox token
-SANDBOX_ACCOUNT = <SANDBOX_ACCOUNT>  # Replace with your actual sandbox account number"
+SANDBOX_ACCOUNT = "<SANDBOX_ACCOUNT>"  # Replace with your actual sandbox account number.
 
 def get_quotes(symbols):
     response = requests.post('https://sandbox.tradier.com/v1/markets/quotes',
@@ -26,7 +26,7 @@ def get_quotes(symbols):
 
 def get_chain(symbol, expiration):
     response = requests.get('https://sandbox.tradier.com/v1/markets/options/chains',
-        params={'symbol': f'{symbol}', 'expiration': f'{expiration}','greeks': 'true'},
+        params={'symbol': f'{symbol}', 'expiration': f'{expiration}', 'greeks': 'true'},
         headers={'Authorization': f'Bearer {SANDBOX_TOKEN}', 'Accept': 'application/json'}
     )
 
@@ -105,5 +105,5 @@ if __name__ == "__main__":
     print(options_chain)
 
     # Place an order
-    PAYLOAD = {'class': 'equity', 'symbol': symbols,'side': 'buy', 'quantity': '1', 'type': 'market','duration': 'day', 'preview': 'false'}
+    PAYLOAD = {'class': 'equity', 'symbol': symbols, 'side': 'buy', 'quantity': '1', 'type': 'market', 'duration': 'day', 'preview': 'false'}
     placeOrder(PAYLOAD)
